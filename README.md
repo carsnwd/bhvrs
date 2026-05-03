@@ -1,10 +1,14 @@
-# bhvr 🦫
+# bhvrs 🦫
 
 ![cover](https://cdn.stevedylan.dev/ipfs/bafybeievx27ar5qfqyqyud7kemnb5n2p4rzt2matogi6qttwkpxonqhra4)
 
-A full-stack TypeScript monorepo starter with shared types, using Bun, Hono, Vite, and React.
+A full-stack TypeScript monorepo starter with shared types, using Bun, Hono, Vite, and Solid. 
 
-## Why bhvr?
+NOTE: The links and documentation is mostly left untouched from bhvr, so you may see references to React instead of Solid. But same ideas generally apply.
+
+This is a fork of [bhvr](https://github.com/stevedylandev/bhvr) that uses Solid instead of React.
+
+## Why bhvrs?
 
 While there are plenty of existing app building stacks out there, many of them are either bloated, outdated, or have too much of a vendor lock-in. bhvr is built with the opinion that you should be able to deploy your client or server in any environment while also keeping type safety.
 
@@ -41,7 +45,7 @@ bun dev
   - [Bun](https://bun.sh) as the JavaScript runtime and package manager
   - [Hono](https://hono.dev) as the backend framework
   - [Vite](https://vitejs.dev) for frontend bundling
-  - [React](https://react.dev) for the frontend UI
+  - [Solid](https://solidjs.com) for the frontend UI
   - [Turbo](https://turbo.build) for monorepo build orchestration and caching
 
 ## Project Structure
@@ -100,7 +104,7 @@ If you wanted to add a database to Hono you can do so with a multitude of Typesc
 
 ### Client
 
-bhvr uses Vite + React Typescript template, which means you can build your frontend just as you would with any other React app. This makes it flexible to add UI components like [shadcn/ui](https://ui.shadcn.com) or routing using [React Router](https://reactrouter.com/start/declarative/installation).
+bhvr uses Vite + Solid Typescript template, which means you can build your frontend just as you would with any other Solid app. 
 
 ```
 client
@@ -151,8 +155,8 @@ function App() {
           <img src={beaver} className="logo" alt="beaver logo" />
         </a>
       </div>
-      <h1>bhvr</h1>
-      <h2>Bun + Hono + Vite + React</h2>
+      <h1>bhvrs</h1>
+      <h2>Bun + Hono + Vite + Solid</h2>
       <p>A typesafe fullstack monorepo</p>
       <div className="card">
         <button onClick={sendRequest}>
