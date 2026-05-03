@@ -52,7 +52,7 @@ bun dev
 
 ```
 .
-├── client/               # React frontend
+├── client/               # Solid frontend
 ├── server/               # Hono backend
 ├── shared/               # Shared TypeScript definitions
 │   └── src/types/        # Type definitions used by both client and server
@@ -128,15 +128,15 @@ client
 ```
 
 ```typescript src/App.tsx
-import { useState } from 'react'
+import { createSignal } from 'solid-js'
 import beaver from './assets/beaver.svg'
-import { ApiResponse } from 'shared'
+import type { ApiResponse } from 'shared'
 import './App.css'
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000"
 
 function App() {
-  const [data, setData] = useState<ApiResponse | undefined>()
+  const [data, setData] = createSignal<ApiResponse | undefined>()
 
   async function sendRequest() {
     try {
@@ -152,28 +152,35 @@ function App() {
     <>
       <div>
         <a href="https://github.com/stevedylandev/bhvr" target="_blank">
-          <img src={beaver} className="logo" alt="beaver logo" />
+          <img src={beaver} class="logo" alt="beaver logo" />
+        </a>
+        <a href="https://github.com/stevedylandev/bhvr" target="_blank">
+          <img src={beaver} class="logo" alt="beaver logo" />
+        </a>
+        <a href="https://github.com/stevedylandev/bhvr" target="_blank">
+          <img src={beaver} class="logo" alt="beaver logo" />
         </a>
       </div>
       <h1>bhvrs</h1>
-      <h2>Bun + Hono + Vite + Solid</h2>
+      <h2>Bun + Hono + Vite + <span style={{ 'text-decoration': 'line-through' }}>React</span> + Solid</h2>
       <p>A typesafe fullstack monorepo</p>
-      <div className="card">
-        <button onClick={sendRequest}>
-          Call API
-        </button>
+      <p>Modified from bhvr to use Solid instead of React</p>
+      <div class="card">
+        <div class='button-container'>
+          <button onClick={sendRequest}>
+            Call API
+          </button>
+          <a class='docs-link' target='_blank' href="https://bhvr.dev">Docs</a>
+        </div>
         {data && (
-          <pre className='response'>
+          <pre class='response'>
             <code>
-            Message: {data.message} <br />
-            Success: {data.success.toString()}
+              Message: {data()?.message} <br />
+              Success: {data()?.success.toString()}
             </code>
           </pre>
         )}
       </div>
-      <p className="read-the-docs">
-        Click the beaver to learn more
-      </p>
     </>
   )
 }
@@ -231,7 +238,7 @@ bun install
 bun run dev
 
 # Or run individual workspaces directly
-bun run dev:client    # Run the Vite dev server for React
+bun run dev:client    # Run the Vite dev server for Solid
 bun run dev:server    # Run the Hono backend
 ```
 
@@ -242,7 +249,7 @@ bun run dev:server    # Run the Hono backend
 bun run build
 
 # Or build individual workspaces directly
-bun run build:client  # Build the React frontend
+bun run build:client  # Build the Solid frontend
 bun run build:server  # Build the Hono backend
 ```
 
@@ -288,7 +295,7 @@ import { ApiResponse } from 'shared/types';
 - [bhvr Documentation](https://bhvr.dev)
 - [Bun Documentation](https://bun.sh/docs)
 - [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://react.dev/learn)
+- [Solid Documentation](https://solidjs.com/docs)
 - [Hono Documentation](https://hono.dev/docs)
 - [Turbo Documentation](https://turbo.build/docs)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
